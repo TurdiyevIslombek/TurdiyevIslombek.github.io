@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- ============ SEO: this is what makes your NAME pull up your WORK ============ -->
+<title>Islombek Turdiyev — I build LLMs and software from scratch</title>
+<meta name="description" content="Islombek Turdiyev is a builder from Bukhara, Uzbekistan. I trained uzbek-gpt-103m (a 103M-parameter language model) from scratch, built a custom Uzbek BPE tokenizer, and founded EduBoost, a learning platform serving 1,000+ students." />
+<meta name="keywords" content="Islombek Turdiyev, Islombek Turdiev, uzbek-gpt, Uzbek LLM, Uzbek language model, Uzbek tokenizer, low-resource NLP, EduBoost, uzbek-gpt-103m, from-scratch transformer" />
+<meta name="author" content="Islombek Turdiyev" />
+<link rel="canonical" href="https://turdiyevislombek.github.io/" />
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="Islombek Turdiyev — I build LLMs and software from scratch" />
+<meta property="og:description" content="Trained a 103M-parameter Uzbek language model from scratch. Built a custom Uzbek tokenizer. Founded EduBoost (1,000+ students)." />
+<meta property="og:url" content="https://turdiyevislombek.github.io/" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Islombek Turdiyev — builder, from-scratch LLMs & software" />
+<meta name="twitter:description" content="uzbek-gpt-103m · custom Uzbek tokenizer · EduBoost (1,000+ students)" />
+
+<!-- JSON-LD: tells Google these accounts are all the same person. High-leverage. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Islombek Turdiyev",
+  "alternateName": ["Islombek Turdiev", "Islombek Turdiyev"],
+  "jobTitle": "Software & Machine Learning Engineer",
+  "description": "Self-taught builder from Bukhara, Uzbekistan. Trains language models from scratch and ships production software.",
+  "url": "https://turdiyevislombek.github.io/",
+  "knowsLanguage": ["uz", "ru", "tg", "en"],
+  "nationality": "Uzbekistan",
+  "sameAs": [
+    "https://github.com/TurdiyevIslombek",
+    "https://huggingface.co/IslombekT",
+    "https://www.eduboostonline.com",
+    "https://www.linkedin.com/in/islombek-turdiyev"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --paper:   #E7ECEA;
+    --paper-2: #DEE5E2;
+    --ink:     #10262B;
+    --ink-soft:#4A5B5E;
+    --lapis:   #164257;   /* Bukhara ceramic blue — primary accent */
+    --azure:   #1C6C86;   /* brighter blue for links/hover */
+    --gold:    #A9772B;   /* suzani ochre — the single spark, used sparingly */
+    --line:    rgba(16,38,43,0.14);
+    --line-2:  rgba(16,38,43,0.28);
+    --disp: "Space Grotesk", system-ui, sans-serif;
+    --body: "Newsreader", Georgia, serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--body); font-size:18px; line-height:1.55;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  a{ color:var(--azure); text-decoration:none; }
+  a:hover{ color:var(--lapis); }
+  ::selection{ background:var(--gold); color:#fff; }
+
+  .wrap{ max-width:860px; margin:0 auto; padding:0 24px; }
+
+  /* eyebrow / labels */
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--lapis);
+  }
+
+  /* ---------- HERO ---------- */
+  header{ padding:88px 0 20px; }
+  .loc{ font-family:var(--mono); font-size:12.5px; letter-spacing:.14em;
+        text-transform:uppercase; color:var(--ink-soft); margin-bottom:26px; }
+  .loc b{ color:var(--lapis); font-weight:500; }
+  h1{
+    font-family:var(--disp); font-weight:700; letter-spacing:-.02em;
+    font-size:clamp(40px, 8.5vw, 74px); line-height:1.02; margin:0 0 22px;
+  }
+  .lede{
+    font-size:clamp(20px, 3.4vw, 27px); line-height:1.4; max-width:30ch;
+    margin:0 0 8px; color:var(--ink);
+  }
+  .lede em{ font-style:italic; color:var(--lapis); }
+
+  /* ---------- tokenizer / bead signature ---------- */
+  .signature{ margin:38px 0 6px; }
+  .sig-cap{ font-family:var(--mono); font-size:11.5px; letter-spacing:.12em;
+            text-transform:uppercase; color:var(--ink-soft); margin-bottom:12px; }
+  .beads{ display:flex; flex-wrap:wrap; gap:5px; align-items:center; }
+  .bead{
+    font-family:var(--mono); font-size:13.5px; white-space:pre;
+    padding:6px 9px; border-radius:7px;
+    background:var(--paper-2); border:1px solid var(--line-2); color:var(--ink);
+    opacity:0; transform:translateY(6px);
+    animation:pop .42s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .bead:nth-child(odd){ background:rgba(22,66,87,.10); border-color:rgba(22,66,87,.30); color:var(--lapis); }
+  .bead.k{ background:rgba(169,119,43,.14); border-color:rgba(169,119,43,.42); color:var(--gold); }
+  @keyframes pop{ to{ opacity:1; transform:translateY(0);} }
+  .sig-note{ font-family:var(--mono); font-size:12px; color:var(--ink-soft); margin-top:14px; }
+  .sig-note b{ color:var(--gold); font-weight:700; }
+
+  /* ---------- link row ---------- */
+  .links{ display:flex; flex-wrap:wrap; gap:10px; margin:34px 0 4px; }
+  .btn{
+    font-family:var(--mono); font-size:13px; letter-spacing:.02em;
+    padding:10px 15px; border:1px solid var(--line-2); border-radius:9px;
+    color:var(--ink); display:inline-flex; gap:8px; align-items:center;
+    transition:border-color .15s, background .15s, transform .15s;
+  }
+  .btn:hover{ border-color:var(--lapis); background:rgba(22,66,87,.06); color:var(--lapis); transform:translateY(-1px); }
+  .btn .dot{ width:7px; height:7px; border-radius:50%; background:var(--gold); }
+
+  /* ---------- section frame ---------- */
+  section{ padding:56px 0; border-top:1px solid var(--line); }
+  .sec-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:30px; }
+  .sec-head h2{ font-family:var(--disp); font-weight:500; font-size:clamp(22px,4vw,30px);
+                letter-spacing:-.01em; margin:0; }
+
+  /* ---------- work cards ---------- */
+  .card{
+    padding:26px 0; border-top:1px solid var(--line);
+    display:grid; grid-template-columns:1fr; gap:14px;
+  }
+  .card:first-of-type{ border-top:none; padding-top:4px; }
+  .card-top{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .card h3{ font-family:var(--mono); font-weight:700; font-size:19px; margin:0; letter-spacing:-.01em; }
+  .card h3 a{ color:var(--ink); border-bottom:2px solid rgba(28,108,134,.35); padding-bottom:1px; }
+  .card h3 a:hover{ color:var(--azure); border-color:var(--azure); }
+  .tag{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+        color:var(--lapis); padding:3px 8px; border:1px solid rgba(22,66,87,.3); border-radius:20px; white-space:nowrap; }
+  .tag.live{ color:var(--gold); border-color:rgba(169,119,43,.42); }
+  .card p{ margin:0; max-width:62ch; }
+  .stats{ display:flex; flex-wrap:wrap; gap:8px 10px; }
+  .stat{ font-family:var(--mono); font-size:12.5px; color:var(--ink);
+         background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:5px 9px; }
+  .stat b{ color:var(--lapis); font-weight:700; }
+  .stat.gold b{ color:var(--gold); }
+
+  /* ---------- about ---------- */
+  .about p{ max-width:64ch; font-size:19px; }
+  .about p + p{ margin-top:16px; }
+  .kv{ font-family:var(--mono); font-size:13px; color:var(--ink-soft); margin-top:22px; line-height:2; }
+  .kv b{ color:var(--lapis); font-weight:500; }
+
+  /* ---------- lattice divider (single quiet craft echo) ---------- */
+  .lattice{ display:block; width:100%; height:34px; margin:0 auto; opacity:.5; }
+
+  /* ---------- footer ---------- */
+  footer{ padding:52px 0 72px; border-top:1px solid var(--line); }
+  .foot-links{ display:flex; flex-wrap:wrap; gap:18px; font-family:var(--mono); font-size:13px; margin-bottom:26px; }
+  .colophon{ font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); letter-spacing:.03em; }
+
+  @media (max-width:560px){
+    header{ padding:64px 0 14px; }
+    body{ font-size:17px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .bead{ animation:none; opacity:1; transform:none; }
+    *{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <header>
+    <div class="loc">Bukhara <span style="color:var(--line-2)">→</span> Navoiy, <b>Uzbekistan</b> · uz / ru / tg / en</div>
+    <h1>Islombek<br>Turdiyev</h1>
+    <p class="lede">I build language models and software <em>from scratch</em> — starting with my own language.</p>
+
+    <div class="signature">
+      <div class="sig-cap">// what my tokenizer sees</div>
+      <div class="beads" id="beads"></div>
+      <div class="sig-note">Uzbek → subword tokens · fertility <b>1.839</b> tokens/word · 16,384-token vocab, trained by me</div>
+    </div>
+
+    <nav class="links">
+      <a class="btn" href="https://github.com/TurdiyevIslombek"><span class="dot"></span>GitHub</a>
+      <a class="btn" href="https://huggingface.co/IslombekT"><span class="dot"></span>Hugging Face</a>
+      <a class="btn" href="https://www.eduboostonline.com"><span class="dot"></span>EduBoost</a>
+      <a class="btn" href="REPLACE_WITH_YOUR_LINKEDIN_URL"><span class="dot"></span>LinkedIn</a>
+    </nav>
+  </header>
+
+  <!-- ================= WORK ================= -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">01 — Work</span>
+      <h2>Things I've built and shipped</h2>
+    </div>
+
+    <article class="card">
+      <div class="card-top">
+        <h3><a href="https://huggingface.co/IslombekT/uzbek-gpt-103m">uzbek-gpt-103m</a></h3>
+        <span class="tag">Language model · from scratch</span>
+      </div>
+      <p>A 103M-parameter decoder-only transformer (RoPE, RMSNorm, SwiGLU), pre-trained from scratch on ~1.06 billion Uzbek tokens. Trained on a single RTX 4090 in about 3.4 hours for roughly $3.60 — and it beats mGPT-1.3B + QLoRA on bits-per-byte despite being an order of magnitude smaller.</p>
+      <div class="stats">
+        <span class="stat"><b>103M</b> params</span>
+        <span class="stat gold"><b>1.105</b> bits/byte</span>
+        <span class="stat"><b>1.06B</b> Uzbek tokens</span>
+        <span class="stat"><b>3.4h</b> · 1× RTX 4090</span>
+        <span class="stat"><b>~$3.60</b> to train</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3><a href="https://huggingface.co/IslombekT/uzbek-bpe-16k">uzbek-bpe-16k</a></h3>
+        <span class="tag">Tokenizer</span>
+      </div>
+      <p>A custom byte-pair-encoding tokenizer built specifically for Uzbek — handling the language's own characters (oʻ, gʻ) and apostrophes that off-the-shelf multilingual tokenizers fragment badly. Lower fertility means fewer tokens per word, which means cheaper training and longer effective context. This is the higher-leverage half of the whole project.</p>
+      <div class="stats">
+        <span class="stat"><b>16,384</b> vocab</span>
+        <span class="stat gold"><b>1.839</b> tokens/word</span>
+        <span class="stat"><b>Uzbek-specific</b> BPE</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3><a href="https://www.eduboostonline.com">EduBoost</a></h3>
+        <span class="tag live">Live · founder</span>
+      </div>
+      <p>A free, full-stack learning platform where students teach students — built solo end to end and running in production for over a thousand learners in underserved regions of Uzbekistan. Next.js, TypeScript, and PostgreSQL, launched in 2025.</p>
+      <div class="stats">
+        <span class="stat gold"><b>1,000+</b> students</span>
+        <span class="stat"><b>Next.js</b> · TypeScript</span>
+        <span class="stat"><b>PostgreSQL</b></span>
+        <span class="stat"><b>solo-built</b>, in production</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3><a href="https://github.com/TurdiyevIslombek/uzbek-gpt-from-scratch">uzbek-gpt-from-scratch</a></h3>
+        <span class="tag">Open source · research</span>
+      </div>
+      <p>The full training code, data pipeline, and a from-scratch-vs-fine-tuning study behind the model — plus an evaluation harness for measuring Uzbek language models fairly. The argument: for a low-resource language, the tokenizer is the choice that matters most.</p>
+      <div class="stats">
+        <span class="stat"><b>Training</b> + data pipeline</span>
+        <span class="stat"><b>Eval harness</b></span>
+        <span class="stat"><b>Reproducible</b></span>
+      </div>
+    </article>
+  </section>
+
+  <svg class="lattice" viewBox="0 0 860 34" preserveAspectRatio="none" aria-hidden="true">
+    <g fill="none" stroke="#164257" stroke-width="1">
+      <path d="M0 17 L860 17" opacity=".25"/>
+      <g opacity=".55">
+        <!-- repeating suzani/bead diamond motif -->
+        <path d="M10 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M50 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M90 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M130 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M170 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M210 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M250 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M290 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M330 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M370 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M410 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M450 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M490 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M530 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M570 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M610 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M650 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M690 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M730 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M770 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M810 17 l10 -10 l10 10 l-10 10 z" />
+        <path d="M850 17 l10 -10 l10 10 l-10 10 z" />
+      </g>
+    </g>
+  </svg>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about">
+    <div class="sec-head">
+      <span class="eyebrow">02 — Who</span>
+      <h2>About me</h2>
+    </div>
+    <p>I'm a self-taught builder from Bukhara. I don't learn things by reading about them — I learn by building the real thing and shipping it. That's how I taught myself full-stack development, and it's how I trained a language model for Uzbek starting from an empty file: tokenizer, data pipeline, architecture, training run, evaluation.</p>
+    <p>Alongside the software, I do traditional Uzbek beadwork with my family — patterns built one bead at a time on a grid, which is closer to how I think about systems than it might sound. My goal is to build frontier-capable language models and start my own AI company.</p>
+    <div class="kv">
+      <b>Building</b> — LLMs from scratch, low-resource NLP, full-stack products<br>
+      <b>Languages</b> — Uzbek · Russian · Tajik · English<br>
+      <b>Also</b> — Kaggle tabular ML, Arduino robotics, Uzbek beadwork (munchoq)
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="foot-links">
+      <a href="https://github.com/TurdiyevIslombek">github.com/TurdiyevIslombek</a>
+      <a href="https://huggingface.co/IslombekT">huggingface.co/IslombekT</a>
+      <a href="https://www.eduboostonline.com">eduboostonline.com</a>
+      <a href="REPLACE_WITH_YOUR_LINKEDIN_URL">LinkedIn</a>
+    </div>
+    <div class="colophon">Islombek Turdiyev · Uzbekistan · builder of things that ship</div>
+  </footer>
+
+</div>
+
+<script>
+  // Tokenizer-bead signature: stylized view of an Uzbek sentence as subword tokens.
+  // (Illustrative of what a BPE tokenizer produces; the 1.839 fertility figure is the real measured stat.)
+  var tokens = ["Men"," oʻz"," til","im"," uchun"," til"," model","ini"," nol","dan"," qur","dim","."];
+  var keyed = {2:true, 6:true, 10:true}; // highlight a few "root" beads in gold
+  var host = document.getElementById("beads");
+  tokens.forEach(function(t, i){
+    var b = document.createElement("span");
+    b.className = "bead" + (keyed[i] ? " k" : "");
+    b.textContent = t;
+    b.style.animationDelay = (i * 55) + "ms";
+    host.appendChild(b);
+  });
+</script>
+</body>
+</html>
