@@ -9,7 +9,9 @@
 <meta name="description" content="Islombek Turdiyev is a builder from Bukhara, Uzbekistan. I trained uzbek-gpt-103m (a 103M-parameter language model) from scratch, built a custom Uzbek BPE tokenizer, and founded EduBoost, a learning platform serving 1,000+ students." />
 <meta name="keywords" content="Islombek Turdiyev, Islombek Turdiev, uzbek-gpt, Uzbek LLM, Uzbek language model, Uzbek tokenizer, low-resource NLP, EduBoost, uzbek-gpt-103m, from-scratch transformer" />
 <meta name="author" content="Islombek Turdiyev" />
+<meta name="theme-color" content="#E7ECEA" />
 <link rel="canonical" href="https://turdiyevislombek.github.io/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 4 60 32 32 60 4 32Z' fill='%23164257'/%3E%3Cpath d='M32 20 44 32 32 44 20 32Z' fill='%23A9772B'/%3E%3C/svg%3E" />
 
 <!-- Open Graph / social -->
 <meta property="og:type" content="profile" />
@@ -18,7 +20,7 @@
 <meta property="og:url" content="https://turdiyevislombek.github.io/" />
 <meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Islombek Turdiyev — builder, from-scratch LLMs & software" />
+<meta name="twitter:title" content="Islombek Turdiyev — builder, from-scratch LLMs &amp; software" />
 <meta name="twitter:description" content="uzbek-gpt-103m · custom Uzbek tokenizer · EduBoost (1,000+ students)" />
 
 <!-- JSON-LD: tells Google these accounts are all the same person. High-leverage. -->
@@ -37,7 +39,7 @@
     "https://github.com/TurdiyevIslombek",
     "https://huggingface.co/IslombekT",
     "https://www.eduboostonline.com",
-    "https://www.linkedin.com/in/islombek-turdiyev/"
+    "https://www.linkedin.com/in/islombek-turdiyev"
   ]
 }
 </script>
@@ -63,41 +65,101 @@
   }
 
   *{ box-sizing:border-box; }
-  html{ -webkit-text-size-adjust:100%; }
+  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:84px; }
   body{
     margin:0; background:var(--paper); color:var(--ink);
     font-family:var(--body); font-size:18px; line-height:1.55;
     -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    overflow-x:clip;
+  }
+  /* faint bead-grid texture over the whole page */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1;
+    background-image:radial-gradient(rgba(16,38,43,.05) 1px, transparent 1.3px);
+    background-size:26px 26px;
   }
   a{ color:var(--azure); text-decoration:none; }
   a:hover{ color:var(--lapis); }
+  a:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; border-radius:4px; }
   ::selection{ background:var(--gold); color:#fff; }
 
-  .wrap{ max-width:860px; margin:0 auto; padding:0 24px; }
+  .wrap{ max-width:1060px; margin:0 auto; padding:0 28px; }
 
-  /* eyebrow / labels */
   .eyebrow{
     font-family:var(--mono); font-size:12px; letter-spacing:.16em;
     text-transform:uppercase; color:var(--lapis);
   }
 
+  /* ---------- scroll progress ---------- */
+  .progress{
+    position:fixed; top:0; left:0; height:2px; width:0; z-index:60;
+    background:linear-gradient(90deg, var(--lapis), var(--azure) 60%, var(--gold));
+  }
+
+  /* ---------- fixed nav ---------- */
+  #nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    border-bottom:1px solid transparent;
+    transition:background .3s ease, border-color .3s ease;
+  }
+  #nav.scrolled{
+    background:rgba(231,236,234,.8);
+    -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+    border-bottom-color:var(--line);
+  }
+  .nav-in{ display:flex; justify-content:space-between; align-items:center; padding:15px 0; }
+  .brand{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--ink); white-space:nowrap;
+  }
+  .brand b{ color:var(--gold); font-weight:400; }
+  .brand:hover{ color:var(--lapis); }
+  .nav-links{ display:flex; gap:24px; font-family:var(--mono); font-size:12px;
+              letter-spacing:.14em; text-transform:uppercase; }
+  .nav-links a{ color:var(--ink-soft); }
+  .nav-links a:hover{ color:var(--lapis); }
+
   /* ---------- HERO ---------- */
-  header{ padding:88px 0 20px; }
+  header{ position:relative; overflow:clip; }
+  header::before{
+    content:""; position:absolute; right:-140px; top:12%;
+    width:620px; height:620px; border-radius:50%; pointer-events:none;
+    background:radial-gradient(circle, rgba(28,108,134,.11), transparent 65%);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,420px);
+    gap:56px; align-items:center;
+    min-height:100vh; min-height:100svh; padding-top:104px; padding-bottom:56px;
+  }
   .loc{ font-family:var(--mono); font-size:12.5px; letter-spacing:.14em;
         text-transform:uppercase; color:var(--ink-soft); margin-bottom:26px; }
   .loc b{ color:var(--lapis); font-weight:500; }
   h1{
     font-family:var(--disp); font-weight:700; letter-spacing:-.02em;
-    font-size:clamp(40px, 8.5vw, 74px); line-height:1.02; margin:0 0 22px;
+    font-size:clamp(44px, 8.5vw, 84px); line-height:1.02; margin:0 0 22px;
   }
+  .h1-line{ display:block; overflow:hidden; padding-bottom:.08em; margin-bottom:-.08em; }
+  .h1-line span{ display:block; transform:translateY(112%);
+                 animation:heroUp .9s cubic-bezier(.16,.8,.24,1) forwards; }
+  .h1-line:nth-child(2) span{ animation-delay:.1s; }
+  @keyframes heroUp{ to{ transform:translateY(0); } }
+  .dmd{ color:var(--gold); font-size:.34em; vertical-align:.6em; margin-left:.2em; }
   .lede{
-    font-size:clamp(20px, 3.4vw, 27px); line-height:1.4; max-width:30ch;
+    font-size:clamp(20px, 3.4vw, 27px); line-height:1.4; max-width:32ch;
     margin:0 0 8px; color:var(--ink);
   }
   .lede em{ font-style:italic; color:var(--lapis); }
 
+  /* staggered hero entrance */
+  .rise{ opacity:0; animation:riseIn .8s cubic-bezier(.2,.7,.2,1) forwards;
+         animation-delay:var(--d, 0s); }
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(26px); }
+    to{ opacity:1; transform:none; }
+  }
+
   /* ---------- tokenizer / bead signature ---------- */
-  .signature{ margin:38px 0 6px; }
+  .signature{ margin:36px 0 6px; }
   .sig-cap{ font-family:var(--mono); font-size:11.5px; letter-spacing:.12em;
             text-transform:uppercase; color:var(--ink-soft); margin-bottom:12px; }
   .beads{ display:flex; flex-wrap:wrap; gap:5px; align-items:center; }
@@ -107,233 +169,546 @@
     background:var(--paper-2); border:1px solid var(--line-2); color:var(--ink);
     opacity:0; transform:translateY(6px);
     animation:pop .42s cubic-bezier(.2,.7,.2,1) forwards;
+    transition:transform .2s ease;
   }
+  .bead:hover{ transform:translateY(-3px); }
   .bead:nth-child(odd){ background:rgba(22,66,87,.10); border-color:rgba(22,66,87,.30); color:var(--lapis); }
   .bead.k{ background:rgba(169,119,43,.14); border-color:rgba(169,119,43,.42); color:var(--gold); }
-  @keyframes pop{ to{ opacity:1; transform:translateY(0);} }
+  @keyframes pop{ to{ opacity:1; transform:translateY(0); } }
   .sig-note{ font-family:var(--mono); font-size:12px; color:var(--ink-soft); margin-top:14px; }
   .sig-note b{ color:var(--gold); font-weight:700; }
 
-  /* ---------- link row ---------- */
-  .links{ display:flex; flex-wrap:wrap; gap:10px; margin:34px 0 4px; }
+  /* ---------- link row / buttons ---------- */
+  .links{ display:flex; flex-wrap:wrap; gap:10px; margin:32px 0 4px; }
   .btn{
     font-family:var(--mono); font-size:13px; letter-spacing:.02em;
     padding:10px 15px; border:1px solid var(--line-2); border-radius:9px;
-    color:var(--ink); display:inline-flex; gap:8px; align-items:center;
-    transition:border-color .15s, background .15s, transform .15s;
+    color:var(--ink); display:inline-flex; gap:9px; align-items:center;
+    transition:border-color .15s, background .15s, transform .15s, box-shadow .3s;
   }
-  .btn:hover{ border-color:var(--lapis); background:rgba(22,66,87,.06); color:var(--lapis); transform:translateY(-1px); }
-  .btn .dot{ width:7px; height:7px; border-radius:50%; background:var(--gold); }
+  .btn::after{ content:"↗"; font-size:12px; color:var(--gold); transition:transform .2s; }
+  .btn:hover{
+    border-color:var(--lapis); background:rgba(22,66,87,.06); color:var(--lapis);
+    transform:translateY(-2px); box-shadow:0 12px 24px -14px rgba(16,38,43,.4);
+  }
+  .btn:hover::after{ transform:translate(2px,-2px); }
+
+  /* ---------- 3D lattice canvas ---------- */
+  .hero-vis{ height:480px; display:flex; flex-direction:column; gap:12px; }
+  .hero-vis canvas{ flex:1; min-height:0; width:100%; display:block; }
+  .vis-cap{ font-family:var(--mono); font-size:11px; letter-spacing:.14em;
+            text-transform:uppercase; color:var(--ink-soft); text-align:center; }
+  .vis-cap b{ color:var(--gold); font-weight:400; }
+
+  /* ---------- marquee ---------- */
+  .marquee{
+    overflow:hidden; padding:13px 0; background:rgba(222,229,226,.5);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .track{ display:flex; width:max-content; animation:mq 34s linear infinite; }
+  .marquee:hover .track{ animation-play-state:paused; }
+  .mq{
+    display:flex; align-items:center; gap:40px; padding-right:40px;
+    font-family:var(--mono); font-size:12px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--ink-soft); white-space:nowrap;
+  }
+  .mq b{ color:var(--gold); font-weight:400; }
+  @keyframes mq{ to{ transform:translateX(-50%); } }
 
   /* ---------- section frame ---------- */
-  section{ padding:56px 0; border-top:1px solid var(--line); }
-  .sec-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:30px; }
-  .sec-head h2{ font-family:var(--disp); font-weight:500; font-size:clamp(22px,4vw,30px);
+  section{ padding:92px 0 76px; }
+  .sec-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:38px; }
+  .sec-head h2{ font-family:var(--disp); font-weight:500; font-size:clamp(23px,4vw,32px);
                 letter-spacing:-.01em; margin:0; }
 
-  /* ---------- work cards ---------- */
+  /* ---------- scroll reveals ---------- */
+  .reveal{ opacity:0; }
+  .reveal.in{ opacity:1; animation:riseIn .75s cubic-bezier(.2,.7,.2,1) backwards;
+              animation-delay:var(--d, 0s); }
+
+  /* ---------- work cards (3D tilt) ---------- */
+  .cards{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:18px; }
   .card{
-    padding:26px 0; border-top:1px solid var(--line);
-    display:grid; grid-template-columns:1fr; gap:14px;
+    position:relative; border:1px solid var(--line); border-radius:16px;
+    padding:26px 26px 24px; display:flex; flex-direction:column; gap:14px;
+    background:linear-gradient(165deg, rgba(255,255,255,.6), rgba(255,255,255,0) 55%), var(--paper-2);
+    transform:perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transform-style:preserve-3d;
+    transition:transform .16s ease-out, box-shadow .35s ease, border-color .35s ease;
   }
-  .card:first-of-type{ border-top:none; padding-top:4px; }
+  .card:hover{
+    box-shadow:0 30px 60px -34px rgba(16,38,43,.45);
+    border-color:rgba(22,66,87,.36); z-index:2;
+  }
+  /* cursor-following sheen */
+  .card::after{
+    content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+    background:radial-gradient(460px circle at var(--mx,50%) var(--my,20%), rgba(255,255,255,.55), transparent 55%);
+    opacity:0; transition:opacity .35s;
+  }
+  .card:hover::after{ opacity:.6; }
+  /* depth-layered children for real parallax inside the tilt */
+  .card-top{ transform:translateZ(30px); }
+  .card p{ transform:translateZ(14px); }
+  .stats{ transform:translateZ(22px); }
+
   .card-top{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; }
-  .card h3{ font-family:var(--mono); font-weight:700; font-size:19px; margin:0; letter-spacing:-.01em; }
+  .card h3{ font-family:var(--mono); font-weight:700; font-size:18.5px; margin:0; letter-spacing:-.01em; }
   .card h3 a{ color:var(--ink); border-bottom:2px solid rgba(28,108,134,.35); padding-bottom:1px; }
+  .card h3 a::after{ content:" ↗"; font-size:.72em; color:var(--gold); }
   .card h3 a:hover{ color:var(--azure); border-color:var(--azure); }
   .tag{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
         color:var(--lapis); padding:3px 8px; border:1px solid rgba(22,66,87,.3); border-radius:20px; white-space:nowrap; }
   .tag.live{ color:var(--gold); border-color:rgba(169,119,43,.42); }
-  .card p{ margin:0; max-width:62ch; }
-  .stats{ display:flex; flex-wrap:wrap; gap:8px 10px; }
+  .card p{ margin:0; font-size:17px; }
+  .stats{ display:flex; flex-wrap:wrap; gap:8px 10px; margin-top:auto; }
   .stat{ font-family:var(--mono); font-size:12.5px; color:var(--ink);
-         background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:5px 9px; }
+         background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:5px 9px; }
   .stat b{ color:var(--lapis); font-weight:700; }
   .stat.gold b{ color:var(--gold); }
+  /* stat chips pop in one by one when the card reveals */
+  .reveal .stat{ opacity:0; transform:translateY(8px); transition:opacity .5s ease, transform .5s ease; }
+  .reveal.in .stat{ opacity:1; transform:none; }
+  .reveal.in .stat:nth-child(1){ transition-delay:.25s; }
+  .reveal.in .stat:nth-child(2){ transition-delay:.32s; }
+  .reveal.in .stat:nth-child(3){ transition-delay:.39s; }
+  .reveal.in .stat:nth-child(4){ transition-delay:.46s; }
+  .reveal.in .stat:nth-child(5){ transition-delay:.53s; }
+
+  /* ---------- lattice divider (quiet craft echo) ---------- */
+  .lattice{ display:block; width:100%; height:34px; opacity:.5; }
 
   /* ---------- about ---------- */
-  .about p{ max-width:64ch; font-size:19px; }
+  .about-grid{ display:grid; grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr);
+               gap:44px; align-items:start; }
+  .about p{ max-width:60ch; font-size:19px; margin:0; }
   .about p + p{ margin-top:16px; }
-  .kv{ font-family:var(--mono); font-size:13px; color:var(--ink-soft); margin-top:22px; line-height:2; }
+  .kv-panel{
+    border:1px solid var(--line); border-radius:16px; padding:22px 24px;
+    background:linear-gradient(165deg, rgba(255,255,255,.55), rgba(255,255,255,0) 60%), var(--paper-2);
+  }
+  .kv-cap{ font-family:var(--mono); font-size:11.5px; letter-spacing:.12em;
+           text-transform:uppercase; color:var(--ink-soft); margin-bottom:14px; }
+  .kv{ font-family:var(--mono); font-size:13px; color:var(--ink-soft); line-height:2.05; }
   .kv b{ color:var(--lapis); font-weight:500; }
 
-  /* ---------- lattice divider (single quiet craft echo) ---------- */
-  .lattice{ display:block; width:100%; height:34px; margin:0 auto; opacity:.5; }
+  /* ---------- footer / contact ---------- */
+  footer{ padding:96px 0 64px; border-top:1px solid var(--line); }
+  .foot-big{
+    font-family:var(--disp); font-weight:700; letter-spacing:-.02em;
+    font-size:clamp(34px, 6vw, 58px); line-height:1.06; margin:14px 0 34px; max-width:18ch;
+  }
+  .foot-big em{ font-family:var(--body); font-style:italic; font-weight:400; color:var(--lapis); }
+  .colophon{ font-family:var(--mono); font-size:11.5px; color:var(--ink-soft);
+             letter-spacing:.03em; margin-top:36px; }
 
-  /* ---------- footer ---------- */
-  footer{ padding:52px 0 72px; border-top:1px solid var(--line); }
-  .foot-links{ display:flex; flex-wrap:wrap; gap:18px; font-family:var(--mono); font-size:13px; margin-bottom:26px; }
-  .colophon{ font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); letter-spacing:.03em; }
-
+  /* ---------- responsive ---------- */
+  @media (max-width:920px){
+    .hero-grid{ grid-template-columns:1fr; min-height:0; gap:8px;
+                padding-top:118px; padding-bottom:26px; }
+    .hero-vis{ height:300px; width:100%; max-width:440px; margin:28px auto 0; }
+    header::before{ display:none; }
+  }
+  @media (max-width:800px){
+    .cards{ grid-template-columns:1fr; }
+    .about-grid{ grid-template-columns:1fr; gap:28px; }
+  }
   @media (max-width:560px){
-    header{ padding:64px 0 14px; }
     body{ font-size:17px; }
+    section{ padding:70px 0 58px; }
+    .brand{ font-size:11px; }
+    .nav-links{ gap:14px; font-size:11px; letter-spacing:.1em; }
   }
   @media (prefers-reduced-motion: reduce){
-    .bead{ animation:none; opacity:1; transform:none; }
-    *{ scroll-behavior:auto; }
+    html{ scroll-behavior:auto; }
+    *, *::before, *::after{ animation:none !important; transition:none !important; }
+    .reveal, .rise, .bead, .h1-line span, .reveal .stat{
+      opacity:1 !important; transform:none !important;
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
+<noscript><style>.reveal{opacity:1}</style></noscript>
 
-  <!-- ================= HERO ================= -->
-  <header>
-    <div class="loc">Bukhara <span style="color:var(--line-2)">→</span> Navoiy, <b>Uzbekistan</b> · uz / ru / tg / en</div>
-    <h1>Islombek<br>Turdiyev</h1>
-    <p class="lede">I build language models and software <em>from scratch</em> — starting with my own language.</p>
+<div class="progress" id="bar"></div>
 
-    <div class="signature">
-      <div class="sig-cap">// what my tokenizer sees</div>
-      <div class="beads" id="beads"></div>
-      <div class="sig-note">Uzbek → subword tokens · fertility <b>1.839</b> tokens/word · 16,384-token vocab, trained by me</div>
+<nav id="nav" aria-label="Site">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><b>◆</b>&nbsp;&nbsp;islombek turdiyev</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="loc rise" style="--d:.05s">Bukhara <span style="color:var(--line-2)">→</span> Navoiy, <b>Uzbekistan</b> · uz / ru / tg / en</div>
+      <h1 aria-label="Islombek Turdiyev">
+        <span class="h1-line"><span>Islombek</span></span>
+        <span class="h1-line"><span>Turdiyev<b class="dmd">◆</b></span></span>
+      </h1>
+      <p class="lede rise" style="--d:.35s">I build language models and software <em>from scratch</em> — starting with my own language.</p>
+
+      <div class="signature rise" style="--d:.5s">
+        <div class="sig-cap">// what my tokenizer sees</div>
+        <div class="beads" id="beads"></div>
+        <div class="sig-note">Uzbek → subword tokens · fertility <b>1.839</b> tokens/word · 16,384-token vocab, trained by me</div>
+      </div>
+
+      <nav class="links rise" style="--d:.65s" aria-label="Profiles">
+        <a class="btn" href="https://github.com/TurdiyevIslombek" target="_blank" rel="me noopener noreferrer">GitHub</a>
+        <a class="btn" href="https://huggingface.co/IslombekT" target="_blank" rel="me noopener noreferrer">Hugging Face</a>
+        <a class="btn" href="https://www.eduboostonline.com" target="_blank" rel="noopener noreferrer">EduBoost</a>
+        <a class="btn" href="https://www.linkedin.com/in/islombek-turdiyev" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+      </nav>
     </div>
 
-    <nav class="links">
-      <a class="btn" href="https://github.com/TurdiyevIslombek"><span class="dot"></span>GitHub</a>
-      <a class="btn" href="https://huggingface.co/IslombekT"><span class="dot"></span>Hugging Face</a>
-      <a class="btn" href="https://www.eduboostonline.com"><span class="dot"></span>EduBoost</a>
-      <a class="btn" href="REPLACE_WITH_YOUR_LINKEDIN_URL"><span class="dot"></span>LinkedIn</a>
-    </nav>
-  </header>
-
-  <!-- ================= WORK ================= -->
-  <section>
-    <div class="sec-head">
-      <span class="eyebrow">01 — Work</span>
-      <h2>Things I've built and shipped</h2>
+    <div class="hero-vis rise" style="--d:.45s" aria-hidden="true">
+      <canvas id="lat"></canvas>
+      <div class="vis-cap">munchoq lattice <b>◆</b> |x|+|y|+|z| ≤ 4 <b>◆</b> drawn live</div>
     </div>
+  </div>
+</header>
 
-    <article class="card">
-      <div class="card-top">
-        <h3><a href="https://huggingface.co/IslombekT/uzbek-gpt-103m">uzbek-gpt-103m</a></h3>
-        <span class="tag">Language model · from scratch</span>
-      </div>
-      <p>A 103M-parameter decoder-only transformer (RoPE, RMSNorm, SwiGLU), pre-trained from scratch on ~1.06 billion Uzbek tokens. Trained on a single RTX 4090 in about 3.4 hours for roughly $3.60 — and it beats mGPT-1.3B + QLoRA on bits-per-byte despite being an order of magnitude smaller.</p>
-      <div class="stats">
-        <span class="stat"><b>103M</b> params</span>
-        <span class="stat gold"><b>1.105</b> bits/byte</span>
-        <span class="stat"><b>1.06B</b> Uzbek tokens</span>
-        <span class="stat"><b>3.4h</b> · 1× RTX 4090</span>
-        <span class="stat"><b>~$3.60</b> to train</span>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="card-top">
-        <h3><a href="https://huggingface.co/IslombekT/uzbek-bpe-16k">uzbek-bpe-16k</a></h3>
-        <span class="tag">Tokenizer</span>
-      </div>
-      <p>A custom byte-pair-encoding tokenizer built specifically for Uzbek — handling the language's own characters (oʻ, gʻ) and apostrophes that off-the-shelf multilingual tokenizers fragment badly. Lower fertility means fewer tokens per word, which means cheaper training and longer effective context. This is the higher-leverage half of the whole project.</p>
-      <div class="stats">
-        <span class="stat"><b>16,384</b> vocab</span>
-        <span class="stat gold"><b>1.839</b> tokens/word</span>
-        <span class="stat"><b>Uzbek-specific</b> BPE</span>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="card-top">
-        <h3><a href="https://www.eduboostonline.com">EduBoost</a></h3>
-        <span class="tag live">Live · founder</span>
-      </div>
-      <p>A free, full-stack learning platform where students teach students — built solo end to end and running in production for over a thousand learners in underserved regions of Uzbekistan. Next.js, TypeScript, and PostgreSQL, launched in 2025.</p>
-      <div class="stats">
-        <span class="stat gold"><b>1,000+</b> students</span>
-        <span class="stat"><b>Next.js</b> · TypeScript</span>
-        <span class="stat"><b>PostgreSQL</b></span>
-        <span class="stat"><b>solo-built</b>, in production</span>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="card-top">
-        <h3><a href="https://github.com/TurdiyevIslombek/uzbek-gpt-from-scratch">uzbek-gpt-from-scratch</a></h3>
-        <span class="tag">Open source · research</span>
-      </div>
-      <p>The full training code, data pipeline, and a from-scratch-vs-fine-tuning study behind the model — plus an evaluation harness for measuring Uzbek language models fairly. The argument: for a low-resource language, the tokenizer is the choice that matters most.</p>
-      <div class="stats">
-        <span class="stat"><b>Training</b> + data pipeline</span>
-        <span class="stat"><b>Eval harness</b></span>
-        <span class="stat"><b>Reproducible</b></span>
-      </div>
-    </article>
-  </section>
-
-  <svg class="lattice" viewBox="0 0 860 34" preserveAspectRatio="none" aria-hidden="true">
-    <g fill="none" stroke="#164257" stroke-width="1">
-      <path d="M0 17 L860 17" opacity=".25"/>
-      <g opacity=".55">
-        <!-- repeating suzani/bead diamond motif -->
-        <path d="M10 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M50 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M90 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M130 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M170 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M210 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M250 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M290 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M330 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M370 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M410 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M450 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M490 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M530 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M570 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M610 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M650 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M690 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M730 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M770 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M810 17 l10 -10 l10 10 l-10 10 z" />
-        <path d="M850 17 l10 -10 l10 10 l-10 10 z" />
-      </g>
-    </g>
-  </svg>
-
-  <!-- ================= ABOUT ================= -->
-  <section class="about">
-    <div class="sec-head">
-      <span class="eyebrow">02 — Who</span>
-      <h2>About me</h2>
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <div class="mq">
+      <span>from-scratch transformer</span><b>◆</b>
+      <span>uzbek-gpt-103m</span><b>◆</b>
+      <span>RoPE · RMSNorm · SwiGLU</span><b>◆</b>
+      <span>uzbek-bpe-16k</span><b>◆</b>
+      <span>1.06B Uzbek tokens</span><b>◆</b>
+      <span>~$3.60 training run</span><b>◆</b>
+      <span>EduBoost — 1,000+ students</span><b>◆</b>
+      <span>Next.js · TypeScript · PostgreSQL</span><b>◆</b>
+      <span>Bukhara → Navoiy</span><b>◆</b>
     </div>
-    <p>I'm a self-taught builder from Bukhara. I don't learn things by reading about them — I learn by building the real thing and shipping it. That's how I taught myself full-stack development, and it's how I trained a language model for Uzbek starting from an empty file: tokenizer, data pipeline, architecture, training run, evaluation.</p>
-    <p>Alongside the software, I do traditional Uzbek beadwork with my family — patterns built one bead at a time on a grid, which is closer to how I think about systems than it might sound. My goal is to build frontier-capable language models and start my own AI company.</p>
-    <div class="kv">
-      <b>Building</b> — LLMs from scratch, low-resource NLP, full-stack products<br>
-      <b>Languages</b> — Uzbek · Russian · Tajik · English<br>
-      <b>Also</b> — Kaggle tabular ML, Arduino robotics, Uzbek beadwork (munchoq)
+    <div class="mq">
+      <span>from-scratch transformer</span><b>◆</b>
+      <span>uzbek-gpt-103m</span><b>◆</b>
+      <span>RoPE · RMSNorm · SwiGLU</span><b>◆</b>
+      <span>uzbek-bpe-16k</span><b>◆</b>
+      <span>1.06B Uzbek tokens</span><b>◆</b>
+      <span>~$3.60 training run</span><b>◆</b>
+      <span>EduBoost — 1,000+ students</span><b>◆</b>
+      <span>Next.js · TypeScript · PostgreSQL</span><b>◆</b>
+      <span>Bukhara → Navoiy</span><b>◆</b>
     </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer>
-    <div class="foot-links">
-      <a href="https://github.com/TurdiyevIslombek">github.com/TurdiyevIslombek</a>
-      <a href="https://huggingface.co/IslombekT">huggingface.co/IslombekT</a>
-      <a href="https://www.eduboostonline.com">eduboostonline.com</a>
-      <a href="REPLACE_WITH_YOUR_LINKEDIN_URL">LinkedIn</a>
-    </div>
-    <div class="colophon">Islombek Turdiyev · Uzbekistan · builder of things that ship</div>
-  </footer>
-
+  </div>
 </div>
 
+<main>
+  <!-- ================= WORK ================= -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">01 — Work</span>
+        <h2>Things I've built and shipped</h2>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal" data-tilt>
+          <div class="card-top">
+            <h3><a href="https://huggingface.co/IslombekT/uzbek-gpt-103m" target="_blank" rel="noopener noreferrer">uzbek-gpt-103m</a></h3>
+            <span class="tag">Language model · from scratch</span>
+          </div>
+          <p>A 103M-parameter decoder-only transformer (RoPE, RMSNorm, SwiGLU), pre-trained from scratch on ~1.06 billion Uzbek tokens. Trained on a single RTX 4090 in about 3.4 hours for roughly $3.60 — and it beats mGPT-1.3B + QLoRA on bits-per-byte despite being an order of magnitude smaller.</p>
+          <div class="stats">
+            <span class="stat"><b>103M</b> params</span>
+            <span class="stat gold"><b>1.105</b> bits/byte</span>
+            <span class="stat"><b>1.06B</b> Uzbek tokens</span>
+            <span class="stat"><b>3.4h</b> · 1× RTX 4090</span>
+            <span class="stat"><b>~$3.60</b> to train</span>
+          </div>
+        </article>
+
+        <article class="card reveal" data-tilt style="--d:.08s">
+          <div class="card-top">
+            <h3><a href="https://huggingface.co/IslombekT/uzbek-bpe-16k" target="_blank" rel="noopener noreferrer">uzbek-bpe-16k</a></h3>
+            <span class="tag">Tokenizer</span>
+          </div>
+          <p>A custom byte-pair-encoding tokenizer built specifically for Uzbek — handling the language's own characters (oʻ, gʻ) and apostrophes that off-the-shelf multilingual tokenizers fragment badly. Lower fertility means fewer tokens per word, which means cheaper training and longer effective context. This is the higher-leverage half of the whole project.</p>
+          <div class="stats">
+            <span class="stat"><b>16,384</b> vocab</span>
+            <span class="stat gold"><b>1.839</b> tokens/word</span>
+            <span class="stat"><b>Uzbek-specific</b> BPE</span>
+          </div>
+        </article>
+
+        <article class="card reveal" data-tilt style="--d:.16s">
+          <div class="card-top">
+            <h3><a href="https://www.eduboostonline.com" target="_blank" rel="noopener noreferrer">EduBoost</a></h3>
+            <span class="tag live">Live · founder</span>
+          </div>
+          <p>A free, full-stack learning platform where students teach students — built solo end to end and running in production for over a thousand learners in underserved regions of Uzbekistan. Next.js, TypeScript, and PostgreSQL, launched in 2025.</p>
+          <div class="stats">
+            <span class="stat gold"><b>1,000+</b> students</span>
+            <span class="stat"><b>Next.js</b> · TypeScript</span>
+            <span class="stat"><b>PostgreSQL</b></span>
+            <span class="stat"><b>solo-built</b>, in production</span>
+          </div>
+        </article>
+
+        <article class="card reveal" data-tilt style="--d:.24s">
+          <div class="card-top">
+            <h3><a href="https://github.com/TurdiyevIslombek/uzbek-gpt-from-scratch" target="_blank" rel="noopener noreferrer">uzbek-gpt-from-scratch</a></h3>
+            <span class="tag">Open source · research</span>
+          </div>
+          <p>The full training code, data pipeline, and a from-scratch-vs-fine-tuning study behind the model — plus an evaluation harness for measuring Uzbek language models fairly. The argument: for a low-resource language, the tokenizer is the choice that matters most.</p>
+          <div class="stats">
+            <span class="stat"><b>Training</b> + data pipeline</span>
+            <span class="stat"><b>Eval harness</b></span>
+            <span class="stat"><b>Reproducible</b></span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <svg class="lattice" aria-hidden="true">
+      <defs>
+        <pattern id="diam" width="40" height="34" patternUnits="userSpaceOnUse">
+          <path d="M10 17l10-10 10 10-10 10z" fill="none" stroke="#164257" />
+        </pattern>
+      </defs>
+      <line x1="0" y1="17" x2="100%" y2="17" stroke="#164257" opacity=".25" />
+      <rect width="100%" height="100%" fill="url(#diam)" opacity=".55" />
+    </svg>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">02 — Who</span>
+        <h2>About me</h2>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p class="reveal">I'm a self-taught builder from Bukhara. I don't learn things by reading about them — I learn by building the real thing and shipping it. That's how I taught myself full-stack development, and it's how I trained a language model for Uzbek starting from an empty file: tokenizer, data pipeline, architecture, training run, evaluation.</p>
+          <p class="reveal" style="--d:.08s">Alongside the software, I do traditional Uzbek beadwork with my family — patterns built one bead at a time on a grid, which is closer to how I think about systems than it might sound. My goal is to build frontier-capable language models and start my own AI company.</p>
+        </div>
+        <aside class="kv-panel reveal" style="--d:.15s">
+          <div class="kv-cap">// quick facts</div>
+          <div class="kv">
+            <b>Building</b> — LLMs from scratch, low-resource NLP, full-stack products<br>
+            <b>Languages</b> — Uzbek · Russian · Tajik · English<br>
+            <b>Also</b> — Kaggle tabular ML, Arduino robotics, Uzbek beadwork (munchoq)<br>
+            <b>Goal</b> — frontier-capable LLMs · my own AI company
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER / CONTACT ================= -->
+<footer id="contact">
+  <div class="wrap">
+    <span class="eyebrow reveal">03 — Contact</span>
+    <h2 class="foot-big reveal" style="--d:.06s">Let's build something <em>from scratch.</em></h2>
+    <div class="links reveal" style="--d:.14s">
+      <a class="btn" href="https://github.com/TurdiyevIslombek" target="_blank" rel="me noopener noreferrer">GitHub</a>
+      <a class="btn" href="https://huggingface.co/IslombekT" target="_blank" rel="me noopener noreferrer">Hugging Face</a>
+      <a class="btn" href="https://www.eduboostonline.com" target="_blank" rel="noopener noreferrer">EduBoost</a>
+      <a class="btn" href="https://www.linkedin.com/in/islombek-turdiyev" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+    </div>
+    <div class="colophon reveal" style="--d:.22s">© 2026 Islombek Turdiyev · Bukhara → Navoiy, Uzbekistan · one HTML file, no frameworks, built by hand</div>
+  </div>
+</footer>
+
 <script>
-  // Tokenizer-bead signature: stylized view of an Uzbek sentence as subword tokens.
-  // (Illustrative of what a BPE tokenizer produces; the 1.839 fertility figure is the real measured stat.)
+(function(){
+  "use strict";
+  var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  /* ---- tokenizer-bead signature: stylized view of an Uzbek sentence as subword tokens.
+     (Illustrative of what a BPE tokenizer produces; the 1.839 fertility figure is the real stat.) ---- */
   var tokens = ["Men"," oʻz"," til","im"," uchun"," til"," model","ini"," nol","dan"," qur","dim","."];
-  var keyed = {2:true, 6:true, 10:true}; // highlight a few "root" beads in gold
+  var keyed = {2:1, 6:1, 10:1};
   var host = document.getElementById("beads");
-  tokens.forEach(function(t, i){
-    var b = document.createElement("span");
-    b.className = "bead" + (keyed[i] ? " k" : "");
-    b.textContent = t;
-    b.style.animationDelay = (i * 55) + "ms";
-    host.appendChild(b);
-  });
+  if (host) {
+    tokens.forEach(function(t, i){
+      var b = document.createElement("span");
+      b.className = "bead" + (keyed[i] ? " k" : "");
+      b.textContent = t;
+      b.style.animationDelay = (reduced ? 0 : 800 + i * 55) + "ms";
+      host.appendChild(b);
+    });
+  }
+
+  /* ---- scroll progress bar + nav backdrop ---- */
+  var bar = document.getElementById("bar");
+  var nav = document.getElementById("nav");
+  var ticking = false;
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var d = document.documentElement;
+      var max = d.scrollHeight - d.clientHeight;
+      if (bar) bar.style.width = (max > 0 ? (d.scrollTop / max) * 100 : 0) + "%";
+      if (nav) nav.classList.toggle("scrolled", d.scrollTop > 24);
+      ticking = false;
+    });
+  }
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---- scroll reveals ---- */
+  var reveals = [].slice.call(document.querySelectorAll(".reveal"));
+  if (reduced || !("IntersectionObserver" in window)) {
+    reveals.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -7% 0px" });
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---- 3D tilt on cards (desktop pointers only) ---- */
+  if (fine && !reduced) {
+    [].slice.call(document.querySelectorAll("[data-tilt]")).forEach(function(card){
+      var rect = null;
+      card.addEventListener("pointerenter", function(){ rect = card.getBoundingClientRect(); });
+      card.addEventListener("pointermove", function(e){
+        if (!rect) rect = card.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width;
+        var py = (e.clientY - rect.top) / rect.height;
+        card.style.setProperty("--rx", ((0.5 - py) * 6).toFixed(2) + "deg");
+        card.style.setProperty("--ry", ((px - 0.5) * 8).toFixed(2) + "deg");
+        card.style.setProperty("--mx", (px * 100).toFixed(1) + "%");
+        card.style.setProperty("--my", (py * 100).toFixed(1) + "%");
+      });
+      card.addEventListener("pointerleave", function(){
+        rect = null;
+        card.style.setProperty("--rx", "0deg");
+        card.style.setProperty("--ry", "0deg");
+      });
+    });
+  }
+
+  /* ---- 3D munchoq lattice: an octahedral bead grid (|x|+|y|+|z| <= R),
+     rotated and perspective-projected on canvas. No libraries. ---- */
+  var canvas = document.getElementById("lat");
+  if (canvas && canvas.getContext) {
+    var ctx = canvas.getContext("2d");
+    var R = 4;
+    var pts = [], edges = [], index = {};
+    var key = function(x, y, z){ return x + "," + y + "," + z; };
+    var x, y, z;
+    for (x = -R; x <= R; x++)
+      for (y = -R; y <= R; y++)
+        for (z = -R; z <= R; z++) {
+          var m = Math.abs(x) + Math.abs(y) + Math.abs(z);
+          if (m <= R) {
+            index[key(x, y, z)] = pts.length;
+            // the 6 axis apexes of the octahedron get the gold accent
+            pts.push({ x: x, y: y, z: z, tip: m === R && ((x !== 0) + (y !== 0) + (z !== 0)) === 1 });
+          }
+        }
+    pts.forEach(function(p, i){
+      [[1,0,0],[0,1,0],[0,0,1]].forEach(function(d){
+        var j = index[key(p.x + d[0], p.y + d[1], p.z + d[2])];
+        if (j !== undefined) edges.push([i, j]);
+      });
+    });
+
+    var W = 0, H = 0;
+    var mx = 0, my = 0, tx = 0, ty = 0;   // eased / target mouse influence
+    var visible = true;
+    var t0 = performance.now();
+    var proj = new Array(pts.length);
+    var order = pts.map(function(_, i){ return i; });
+
+    function draw(now){
+      var t = (now - t0) / 1000;
+      mx += (tx - mx) * 0.05;
+      my += (ty - my) * 0.05;
+      var ay = t * 0.22 + mx * 0.9;
+      var ax = -0.42 + my * 0.55;
+      var cy = Math.cos(ay), sy = Math.sin(ay);
+      var cx = Math.cos(ax), sx = Math.sin(ax);
+      var unit = Math.min(W, H) / (R * 2.7) * (1 + 0.025 * Math.sin(t * 0.7));
+      var fov = 9, CX = W / 2, CY = H / 2, i;
+
+      ctx.clearRect(0, 0, W, H);
+
+      for (i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        var x1 = p.x * cy + p.z * sy;
+        var z1 = p.z * cy - p.x * sy;
+        var y1 = p.y * cx - z1 * sx;
+        var z2 = p.y * sx + z1 * cx;
+        var s = fov / (fov + z2);
+        proj[i] = { x: CX + x1 * unit * s, y: CY + y1 * unit * s, z: z2, s: s, tip: p.tip };
+      }
+
+      ctx.lineWidth = 1;
+      for (i = 0; i < edges.length; i++) {
+        var a = proj[edges[i][0]], b = proj[edges[i][1]];
+        var al = ((a.s + b.s) / 2 - 0.72) * 0.5;
+        if (al <= 0.012) continue;
+        ctx.strokeStyle = "rgba(22,66,87," + Math.min(0.5, al).toFixed(3) + ")";
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      }
+
+      order.sort(function(a, b){ return proj[b].z - proj[a].z; });
+      for (i = 0; i < order.length; i++) {
+        var q = proj[order[i]];
+        var alp = 0.22 + 0.62 * Math.max(0, Math.min(1, (q.s - 0.72) / 0.6));
+        ctx.beginPath();
+        ctx.arc(q.x, q.y, (q.tip ? 3.6 : 2.1) * q.s, 0, 6.2832);
+        ctx.fillStyle = q.tip
+          ? "rgba(169,119,43," + Math.min(1, alp + 0.2).toFixed(3) + ")"
+          : "rgba(22,66,87," + alp.toFixed(3) + ")";
+        ctx.fill();
+      }
+    }
+
+    function resize(){
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var b = canvas.getBoundingClientRect();
+      W = b.width; H = b.height;
+      canvas.width = Math.max(1, Math.round(W * dpr));
+      canvas.height = Math.max(1, Math.round(H * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (reduced) draw(t0 + 3800);   // static three-quarter view
+    }
+
+    function loop(now){
+      if (visible && W > 0) draw(now);
+      requestAnimationFrame(loop);
+    }
+
+    if ("ResizeObserver" in window) new ResizeObserver(resize).observe(canvas);
+    else addEventListener("resize", resize);
+    resize();
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }).observe(canvas);
+    }
+    if (fine && !reduced) {
+      addEventListener("pointermove", function(e){
+        tx = e.clientX / innerWidth - 0.5;
+        ty = e.clientY / innerHeight - 0.5;
+      }, { passive: true });
+    }
+    if (!reduced) requestAnimationFrame(loop);
+  }
+})();
 </script>
 </body>
 </html>
