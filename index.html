@@ -359,7 +359,7 @@
       <div class="signature rise" style="--d:.5s">
         <div class="sig-cap">// what my tokenizer sees</div>
         <div class="beads" id="beads"></div>
-        <div class="sig-note">Uzbek → subword tokens · fertility <b>1.839</b> tokens/word · 16,384-token vocab, trained by me</div>
+        <div class="sig-note">Uzbek → subword tokens · fertility <b>1.749</b> tokens/word · 16,384-token vocab, trained by me</div>
       </div>
 
       <nav class="links rise" style="--d:.65s" aria-label="Profiles">
@@ -420,10 +420,10 @@
             <h3><a href="https://huggingface.co/IslombekT/uzbek-gpt-103m" target="_blank" rel="noopener noreferrer">uzbek-gpt-103m</a></h3>
             <span class="tag">Language model · from scratch</span>
           </div>
-          <p>A 103M-parameter decoder-only transformer (RoPE, RMSNorm, SwiGLU), pre-trained from scratch on ~1.06 billion Uzbek tokens. Trained on a single RTX 4090 in about 3.4 hours for roughly $3.60 — and it beats mGPT-1.3B + QLoRA on bits-per-byte despite being an order of magnitude smaller.</p>
+          <p>A 103M-parameter decoder-only transformer (RoPE, RMSNorm, SwiGLU), pre-trained from scratch on ~1.06 billion Uzbek tokens. Trained on a single RTX 4090 in about 3.4 hours for roughly $3.60 — and on held-out Uzbek it beats mGPT-1.3B (13× larger, as-is or fine-tuned) and current Qwen models up to 1.7B.</p>
           <div class="stats">
             <span class="stat"><b>103M</b> params</span>
-            <span class="stat gold"><b>1.105</b> bits/byte</span>
+            <span class="stat gold"><b>1.038</b> bits/byte</span>
             <span class="stat"><b>1.06B</b> Uzbek tokens</span>
             <span class="stat"><b>3.4h</b> · 1× RTX 4090</span>
             <span class="stat"><b>~$3.60</b> to train</span>
@@ -435,10 +435,10 @@
             <h3><a href="https://huggingface.co/IslombekT/uzbek-bpe-16k" target="_blank" rel="noopener noreferrer">uzbek-bpe-16k</a></h3>
             <span class="tag">Tokenizer</span>
           </div>
-          <p>A custom byte-pair-encoding tokenizer built specifically for Uzbek — handling the language's own characters (oʻ, gʻ) and apostrophes that off-the-shelf multilingual tokenizers fragment badly. Lower fertility means fewer tokens per word, which means cheaper training and longer effective context. This is the higher-leverage half of the whole project.</p>
+          <p>A custom byte-pair-encoding tokenizer built specifically for Uzbek — handling the language's own characters (oʻ, gʻ) and apostrophes that off-the-shelf multilingual tokenizers fragment badly. It uses the fewest tokens per word of 11 tokenizers I tested. A controlled experiment showed what that buys: the same model reached comparable quality with less than half the parameters and about a third of the training compute.</p>
           <div class="stats">
             <span class="stat"><b>16,384</b> vocab</span>
-            <span class="stat gold"><b>1.839</b> tokens/word</span>
+            <span class="stat gold"><b>1.749</b> tokens/word</span>
             <span class="stat"><b>Uzbek-specific</b> BPE</span>
           </div>
         </article>
@@ -462,7 +462,7 @@
             <h3><a href="https://github.com/TurdiyevIslombek/uzbek-gpt-from-scratch" target="_blank" rel="noopener noreferrer">uzbek-gpt-from-scratch</a></h3>
             <span class="tag">Open source · research</span>
           </div>
-          <p>The full training code, data pipeline, and a from-scratch-vs-fine-tuning study behind the model — plus an evaluation harness for measuring Uzbek language models fairly. The argument: for a low-resource language, the tokenizer is the choice that matters most.</p>
+          <p>The full training code, data pipeline, and a from-scratch-vs-fine-tuning study behind the model — plus an audit of my own evaluation that found and fixed four problems. The finding: prediction quality comes from training on the language; a tokenizer built for it makes the model smaller and cheaper.</p>
           <div class="stats">
             <span class="stat"><b>Training</b> + data pipeline</span>
             <span class="stat"><b>Eval harness</b></span>
@@ -533,7 +533,7 @@
   var fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   /* ---- tokenizer-bead signature: stylized view of an Uzbek sentence as subword tokens.
-     (Illustrative of what a BPE tokenizer produces; the 1.839 fertility figure is the real stat.) ---- */
+     (Illustrative of what a BPE tokenizer produces; the 1.749 fertility figure is the real stat.) ---- */
   var tokens = ["Men"," oʻz"," til","im"," uchun"," til"," model","ini"," nol","dan"," qur","dim","."];
   var keyed = {2:1, 6:1, 10:1};
   var host = document.getElementById("beads");
